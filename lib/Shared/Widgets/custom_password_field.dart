@@ -5,16 +5,16 @@ import 'package:snacky/Shared/Widgets/custom_text_form_filed.dart';
 class CustomPasswordField extends StatefulWidget {
   final String hintText;
   final String? Function(String?)? validator;
-  final TextEditingController? controller;
   final void Function(String?)? onSaved;
   final String? labelText;
+  final TextEditingController passwordController;
   const CustomPasswordField({
     super.key,
     required this.hintText,
     this.onSaved,
     this.validator,
-    this.controller,
     this.labelText,
+    required this.passwordController,
   });
 
   @override
@@ -27,6 +27,7 @@ class _CustomPasswordFieldState extends State<CustomPasswordField> {
   @override
   Widget build(BuildContext context) {
     return CustomTextFormField(
+      controller: widget.passwordController,
       labelText: widget.labelText,
       validator: widget.validator,
       hintText: widget.hintText,
