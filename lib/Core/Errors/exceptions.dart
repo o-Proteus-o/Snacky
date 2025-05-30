@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 
-class MyExeption implements Exception {
+class MyException implements Exception {
   final String message;
-  MyExeption(this.message);
+  MyException(this.message);
 }
 
 class FireException extends FirebaseAuthException {
