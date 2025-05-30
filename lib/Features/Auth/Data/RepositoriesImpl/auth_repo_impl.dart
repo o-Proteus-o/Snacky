@@ -21,13 +21,13 @@ class AuthRepoImpl extends AuthRepo {
   ) async {
     try {
       var user = await supabaseAuthService.createWithEmailAndPassword(
-        name: name,
-        email: email,
-        password: password,
+        name: name.trim(),
+        email: email.trim(),
+        password: password.trim(),
       );
 
       return right(SupabaseUserModel.fromSupabaseUser(user!));
-    } on MyExeption catch (e) {
+    } on MyException catch (e) {
       return left(ServerFailure(e.toString()));
     } catch (e) {
       log(e.toString());
@@ -46,7 +46,7 @@ class AuthRepoImpl extends AuthRepo {
         password: password,
       );
       return right(SupabaseUserModel.fromSupabaseUser(user!));
-    } on MyExeption catch (e) {
+    } on MyException catch (e) {
       return left(ServerFailure(e.toString()));
     } catch (e) {
       log(e.toString());

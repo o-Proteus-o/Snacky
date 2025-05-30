@@ -43,9 +43,9 @@ class RegisterCubit extends Cubit<RegisterState> {
     emit(RegisterLoading());
 
     final result = await authRepo.createWithEmailAndPassword(
-      nameUser,
-      email,
-      password,
+      nameUser.trim(),
+      email.trim(),
+      password.trim(),
     );
 
     result.fold(
