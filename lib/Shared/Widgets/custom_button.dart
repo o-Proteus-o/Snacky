@@ -30,10 +30,10 @@ class CustomButton extends StatelessWidget {
             child: Text(
               text,
               style: AppTypography.font18SemiBold.copyWith(
-                color:
-                    Theme.of(context).brightness == Brightness.light
-                        ? AppColors.neutral500
-                        : AppColors.neutral50,
+                color: AppColors.neutral50,
+                // Theme.of(context).brightness == Brightness.light
+                //     ? AppColors.neutral500
+                //     : AppColors.neutral50,
               ),
             ),
           ),
