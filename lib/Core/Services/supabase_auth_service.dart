@@ -1,3 +1,6 @@
+import 'dart:developer';
+
+import 'package:snacky/Core/Errors/exceptions.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class SupabaseAuthService {
@@ -8,12 +11,23 @@ class SupabaseAuthService {
     required String name,
     required String password,
   }) async {
-    final response = await _client.auth.signUp(
-      email: email.trim(),
-      password: password,
-      data: {'name': name},
-    );
-    return response.user!;
+    try {
+      final response = await Supabase.instance.client.auth.signUp(
+        data: {'full_name': name.trim()},
+        email: email.trim(),
+        password: password.trim(),
+      );
+      return response.user!;
+    } on AuthApiException catch (e) {
+      log('Supabase API Error: ${e.message}');
+      throw MyException('Supabase API Error: ${e.message}');
+    } on AuthRetryableFetchException catch (e) {
+      log('Network Error: ${e.message}');
+      throw MyException('Network Error: ${e.message}');
+    } catch (e) {
+      log('Unexpected error: $e');
+      throw MyException('Unexpected error: $e');
+    }
   }
 
   Future<User?> signIn({
