@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "440187533041",
+    "project_id": "snacky-3828f",
+    "storage_bucket": "snacky-3828f.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:440187533041:android:ef4578e5d65a173991db50",
+        "android_client_info": {
+          "package_name": "com.example.snacky"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCofs_YW7HEnGEnt1ol412SwMPEVc6qSyk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
