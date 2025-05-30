@@ -58,9 +58,10 @@ class _RegisterScreenBodyState extends State<RegisterScreenBody> {
   Widget _buildPasswordField() => FadeTransition(
     opacity: opacity.fadeAnimations[1],
     child: CustomPasswordField(
-      controller: passwordController,
+      onSaved: (val) => password = val ?? '',
+      passwordController: passwordController,
       validator: (val) {
-        if (val == null || val.isEmpty) {
+        if (val == null || val.trim().isEmpty || val.trim().length < 6) {
           return "Password is required";
         }
         if (val.length < 6) {
@@ -70,7 +71,6 @@ class _RegisterScreenBodyState extends State<RegisterScreenBody> {
       },
       hintText: "Password",
       labelText: "Password",
-      onSaved: (val) => password = val!,
     ),
   );
 
@@ -78,12 +78,12 @@ class _RegisterScreenBodyState extends State<RegisterScreenBody> {
     text: "Sign Up",
     opacity: opacity.fadeAnimations[2],
     onClick: () {
-      formKey.currentState!.save();
       if (formKey.currentState!.validate()) {
+        // formKey.currentState!.save();
         context.read<RegisterCubit>().signUpWithEmailAndPassword(
-          nameUser: nameController.text,
-          email: emailController.text,
-          password: passwordController.text,
+          nameUser: nameController.text.trim(),
+          email: emailController.text.trim(),
+          password: passwordController.text.trim(),
         );
       } else {
         setState(() {
