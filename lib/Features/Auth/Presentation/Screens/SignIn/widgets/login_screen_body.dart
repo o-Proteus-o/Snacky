@@ -22,6 +22,8 @@ class LoginScreenBody extends StatefulWidget {
 class _LoginScreenBodyState extends State<LoginScreenBody> {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
+  TextEditingController passwordController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
   final opacity = Get.put(OnBoardingController());
   late String email, password;
   @override
@@ -49,6 +51,7 @@ class _LoginScreenBodyState extends State<LoginScreenBody> {
               FadeTransition(
                 opacity: opacity.fadeAnimations[1],
                 child: CustomTextFormField(
+                  controller: emailController,
                   hintText: "Enter Your Email",
                   onSaved: (val) {
                     email = val!;
@@ -59,6 +62,7 @@ class _LoginScreenBodyState extends State<LoginScreenBody> {
               FadeTransition(
                 opacity: opacity.fadeAnimations[2],
                 child: CustomPasswordField(
+                  passwordController: passwordController,
                   hintText: "Password",
                   onSaved: (val) {
                     password = val!;
@@ -72,11 +76,11 @@ class _LoginScreenBodyState extends State<LoginScreenBody> {
                 text: "Sign In",
                 opacity: opacity.fadeAnimations[3],
                 onClick: () {
-                  formKey.currentState!.save();
+                  // formKey.currentState!.save();
                   if (formKey.currentState!.validate()) {
                     context.read<SigninCubit>().signInWithEmailAndPassword(
-                      email: email,
-                      password: password,
+                      email: emailController.text.trim(),
+                      password: passwordController.text.trim(),
                     );
                   } else {
                     AutovalidateMode.always;
