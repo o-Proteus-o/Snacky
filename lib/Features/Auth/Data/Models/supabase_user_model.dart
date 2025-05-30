@@ -4,9 +4,9 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 class SupabaseUserModel extends UserEntity {
   SupabaseUserModel({required super.password, required super.email});
 
-  factory SupabaseUserModel.fromSupabaseUser(AuthResponse response) {
+  factory SupabaseUserModel.fromSupabaseUser(User user) {
     return SupabaseUserModel(
-      email: response.user?.email ?? '',
+      email: user.email ?? '',
       password: '', // Password is not returned by Supabase for security reasons
     );
   }
