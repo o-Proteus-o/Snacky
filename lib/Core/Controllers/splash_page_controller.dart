@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:snacky/Core/Services/shred_pred_service.dart';
 import 'package:snacky/Features/Auth/Presentation/Screens/SignIn/login_screen.dart';
 import 'package:snacky/Features/Start/OnBorading/Presentation/onboarding_screen.dart';
+import 'package:snacky/Features/Start/UserRole/user_role_screen.dart';
 
 class SplashController extends GetxController
     with GetSingleTickerProviderStateMixin {
@@ -51,18 +52,21 @@ class SplashController extends GetxController
         duration: const Duration(milliseconds: 500),
       );
     }
-
-    final role = SharedPrefsService.instance.userRole;
-    switch (role) {
-      case 'seller':
-        // Get.offAll(() => SellerHome());
-        break;
-      case 'driver':
-        // Get.offAll(() => DriverHome());
-        break;
-      case 'customer':
-      default:
-      // Get.offAll(() => CustomerHome());
+    final isAuthenticated = SharedPrefsService.instance.isAuth;
+    if (isAuthenticated) {
+      await Future.delayed(const Duration(milliseconds: 500));
+      Get.off(
+        () => UserRoleScreen(),
+        transition: Transition.fadeIn,
+        duration: const Duration(milliseconds: 500),
+      );
+    } else {
+      await Future.delayed(const Duration(milliseconds: 500));
+      Get.off(
+        () => LoginScreen(),
+        transition: Transition.fadeIn,
+        duration: const Duration(milliseconds: 500),
+      );
     }
   }
 
