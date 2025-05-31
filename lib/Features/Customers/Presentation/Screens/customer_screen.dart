@@ -52,29 +52,21 @@ class _CustomerScreenState extends State<CustomerScreen> {
                 label: Text("9+", style: TextStyle(color: Colors.white)),
               ),
             ),
-
-            /// Favourite
             CrystalNavigationBarItem(
               icon: LucideIcons.heart,
               unselectedIcon: LucideIcons.heart,
               selectedColor: Colors.red,
             ),
-
-            /// Add
             CrystalNavigationBarItem(
               icon: LucideIcons.plus,
               unselectedIcon: LucideIcons.plus,
               selectedColor: Colors.white,
             ),
-
-            /// Search
             CrystalNavigationBarItem(
               icon: LucideIcons.search,
               unselectedIcon: LucideIcons.search,
               selectedColor: Colors.white,
             ),
-
-            /// Profile
             CrystalNavigationBarItem(
               icon: LucideIcons.user,
               unselectedIcon: LucideIcons.user,
