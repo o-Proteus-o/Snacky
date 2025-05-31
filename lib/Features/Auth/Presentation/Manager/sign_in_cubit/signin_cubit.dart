@@ -22,4 +22,13 @@ class SigninCubit extends Cubit<SigninState> {
       (user) => emit(SigninSuccess(user)),
     );
   }
+
+  Future<void> signInWithGoogle() async {
+    emit(SigninLoading());
+    final result = await authRepo.signInWithGoogle();
+    result.fold(
+      (failure) => emit(SigninFailed(failure.message)),
+      (user) => emit(SigninSuccess(user)),
+    );
+  }
 }

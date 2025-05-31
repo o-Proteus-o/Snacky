@@ -28,7 +28,6 @@ class RoleWidget extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
               ),
-
               child: Center(
                 child: Text(
                   text,

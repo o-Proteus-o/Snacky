@@ -10,6 +10,7 @@ import 'package:snacky/Shared/Widgets/custom_button.dart';
 import 'package:snacky/Shared/Widgets/custom_password_field.dart';
 import 'package:snacky/Shared/Widgets/custom_text_form_filed.dart';
 import 'package:snacky/Shared/Widgets/divider_row.dart';
+import 'package:snacky/Shared/Widgets/google_and_facebook_sign.dart';
 import 'package:snacky/Shared/Widgets/or_sign.dart';
 
 class RegisterScreenBody extends StatefulWidget {
@@ -98,7 +99,9 @@ class _RegisterScreenBodyState extends State<RegisterScreenBody> {
     child: OrSign(
       orSignText: "Already have an account? ",
       signText: "Login",
-      onTap: () => Get.off(() => const LoginScreen()),
+      onTap: () {
+        Get.off(() => const LoginScreen());
+      },
     ),
   );
 
@@ -138,10 +141,10 @@ class _RegisterScreenBodyState extends State<RegisterScreenBody> {
                   child: DividerRow(text: "Or Sign UP With"),
                 ),
                 const SizedBox(height: 20),
-                // FadeTransition(
-                //   opacity: opacity.fadeAnimations[2],
-                //   child: GoogleAndFacebookSign(),
-                // ),
+                FadeTransition(
+                  opacity: opacity.fadeAnimations[2],
+                  child: GoogleAndFacebookSign(),
+                ),
                 const SizedBox(height: 20),
                 _buildOrSign(),
               ],

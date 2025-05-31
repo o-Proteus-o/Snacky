@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 class GoogleAndFacebookSign extends StatelessWidget {
   final void Function()? onGoogleSign;
@@ -18,12 +17,12 @@ class GoogleAndFacebookSign extends StatelessWidget {
         GestureDetector(
           onTap: onGoogleSign,
           child: Container(
-            width: 45,
-            height: 45,
+            width: 55,
+            height: 55,
             decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
-            child: SvgPicture.network(
-              'https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg',
-              fit: BoxFit.contain,
+            child: Image.asset(
+              "assets/images/googlelogo.png",
+              // fit: BoxFit.fill,
             ),
           ),
         ),
@@ -31,12 +30,12 @@ class GoogleAndFacebookSign extends StatelessWidget {
         GestureDetector(
           onTap: onFacebookSign,
           child: Container(
-            width: 45,
-            height: 45,
+            width: 90,
+            height: 90,
             decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
-            child: Image.network(
-              'https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png',
-              fit: BoxFit.contain,
+            child: Image.asset(
+              'assets/images/Facebooklogo.png',
+              // fit: BoxFit.fill,
             ),
           ),
         ),

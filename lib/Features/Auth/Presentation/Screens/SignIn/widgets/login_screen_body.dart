@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:get/get.dart';
+import 'package:get/get.dart' as gip;
 import 'package:snacky/Core/Controllers/onboarding_page_controller.dart';
 import 'package:snacky/Core/Utils/Constant/colors.dart';
 import 'package:snacky/Core/Utils/Constant/typography.dart';
@@ -10,6 +10,7 @@ import 'package:snacky/Shared/Widgets/custom_button.dart';
 import 'package:snacky/Shared/Widgets/custom_password_field.dart';
 import 'package:snacky/Shared/Widgets/custom_text_form_filed.dart';
 import 'package:snacky/Shared/Widgets/divider_row.dart';
+import 'package:snacky/Shared/Widgets/google_and_facebook_sign.dart';
 import 'package:snacky/Shared/Widgets/or_sign.dart';
 
 class LoginScreenBody extends StatefulWidget {
@@ -24,7 +25,7 @@ class _LoginScreenBodyState extends State<LoginScreenBody> {
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
   TextEditingController passwordController = TextEditingController();
   TextEditingController emailController = TextEditingController();
-  final opacity = Get.put(OnBoardingController());
+  final opacity = gip.Get.put(OnBoardingController());
   late String email, password;
   @override
   Widget build(BuildContext context) {
@@ -93,13 +94,15 @@ class _LoginScreenBodyState extends State<LoginScreenBody> {
                 child: DividerRow(text: " Or Sign In With "),
               ),
               const SizedBox(height: 20),
-              // FadeTransition(
-              //   opacity: opacity.fadeAnimations[4],
-              //   child: GoogleAndFacebookSign(
-              //     onFacebookSign: () {},
-              //     onGoogleSign: () {},
-              //   ),
-              // ),
+              FadeTransition(
+                opacity: opacity.fadeAnimations[4],
+                child: GoogleAndFacebookSign(
+                  onFacebookSign: () {},
+                  onGoogleSign: () {
+                    context.read<SigninCubit>().signInWithGoogle();
+                  },
+                ),
+              ),
               const SizedBox(height: 20),
               FadeTransition(
                 opacity: opacity.fadeAnimations[3],
@@ -107,9 +110,9 @@ class _LoginScreenBodyState extends State<LoginScreenBody> {
                   orSignText: "Don't have an account? ",
                   signText: "Sign Up",
                   onTap: () {
-                    Get.off(
+                    () => gip.Get.off(
                       RegisterScreen(),
-                      // transition: Transition.fade,
+                      transition: gip.Transition.fade,
                       duration: const Duration(milliseconds: 500),
                     );
                   },
