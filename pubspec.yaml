@@ -9,6 +9,7 @@ environment:
   sdk: ^3.7.2
 
 dependencies:
+  crystal_navigation_bar: ^1.0.4
   cupertino_icons: ^1.0.8
   dartz: ^0.10.1
   flutter:
