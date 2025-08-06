@@ -5,9 +5,6 @@ class SupabaseUserModel extends UserEntity {
   SupabaseUserModel({required super.password, required super.email});
 
   factory SupabaseUserModel.fromSupabaseUser(User user) {
-    return SupabaseUserModel(
-      email: user.email ?? '',
-      password: '', // Password is not returned by Supabase for security reasons
-    );
+    return SupabaseUserModel(email: user.email ?? '', password: '');
   }
 }
