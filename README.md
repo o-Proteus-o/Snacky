@@ -1,9 +1,9 @@
 # 🍔 Snacky  
 
-![Status](https://img.shields.io/badge/status-maintenance-orange?style=for-the-badge&logo=flutter)
+![Status](https://img.shields.io/badge/status-Sold-orange?style=for-the-badge&logo=flutter)
 
-> ⚠️ Snacky is currently in **maintenance mode**.  
-> The app is being improved and polished. Expect new features soon! ✨  
+> ⚠️ Snacky is currently in **Sold**.  
+> There gonna be a prototype from it soon! ✨  
 
 ---
 
